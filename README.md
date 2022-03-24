@@ -20,7 +20,8 @@ System to generate your poll 🚀.
 
 ### Technologies
 
-WIP
+- Ruby on Rails
+- ReactJS
 
 ### Getting Started
 
