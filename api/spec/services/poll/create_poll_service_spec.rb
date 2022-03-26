@@ -5,7 +5,8 @@ RSpec.describe 'CreatePollService' do
     it 'when title and description is valid' do
       params = {
         title: Faker::Lorem.words(number: 4, supplemental: true).join(' '),
-        description: Faker::Lorem.words(number: 4, supplemental: true).join(' ')
+        description: Faker::Lorem.words(number: 4, supplemental: true).join(' '),
+        options: [ { :description => "any_1" } ]
       }
       poll = Poll::CreatePollService.call(params)
 
