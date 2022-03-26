@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import { Header, SideBar, Container } from '../components'
+import { Header, SideBar, Container, Breadcrumb, Link } from '../components'
 import styles from '../styles/pages/Home.module.css'
 
 const Home: NextPage = () => {
@@ -9,7 +9,7 @@ const Home: NextPage = () => {
       <main className={styles.main}>
         <SideBar />
         <Container>
-          <h1>Hello Poll</h1>
+          Surveys
         </Container>
       </main>
     </>
