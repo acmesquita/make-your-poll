@@ -5,7 +5,7 @@ class Api::V1::PollController < ApplicationController
     if @poll.errors.blank?
       render json: @poll, status: :created
     else
-      render json: @poll.errors, status: :bad_request
+      render json: { errors: @poll.errors }, status: :bad_request
     end
   end
 
