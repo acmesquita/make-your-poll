@@ -6,7 +6,7 @@ export function Header() {
     <nav className={styles.container}>
       <h1>Make your Survey</h1>
       <div>
-        <h3>Catharina Mesquita</h3>
+        <p>Catharina Mesquita</p>
       </div>
     </nav>
   )
