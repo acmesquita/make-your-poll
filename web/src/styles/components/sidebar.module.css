@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background-color: #2a2a5c;
+  color: aliceblue;
+  width: 256px;
+  height: calc(100vh - 44px);
+  justify-content: space-between;
+  align-items: center;
+}
+
+.list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.listItem {
+  padding: 24px;
+}
+
+.footer {
+  padding-bottom: 24px;
+}
