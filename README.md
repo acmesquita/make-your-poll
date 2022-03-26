@@ -4,8 +4,8 @@ System to generate your poll 🚀.
 
 ### Requeriments
 
-- [ ] 1 - A user can come to the webpage and create a new poll.
-- [ ] 2 - The user should be able to specify a title for the poll, a brief description, and a list of options.
+- [x] 1 - A user can come to the webpage and create a new poll.
+- [x] 2 - The user should be able to specify a title for the poll, a brief description, and a list of options.
 - [ ] 3 - After the poll is created, the user should be able to edit the poll, and modify anything they specified originally.
 - [ ] 4 - After the poll is created, the user should be able to share their poll with their friends. This can be as simple as generating a link that they can have other people go to to respond to the poll.
 - [ ] 5 - The user should be able to view a graph of the responses to their poll.
@@ -20,8 +20,8 @@ System to generate your poll 🚀.
 
 ### Technologies
 
-- Ruby on Rails
-- ReactJS
+- Ruby on Rails - backend api
+- NextJS - frontend 
 
 ### Getting Started
 
