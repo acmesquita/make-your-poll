@@ -6,16 +6,15 @@ type Props = {
   name: string
   type: "text"
   register: UseFormRegister<FieldValues>
-  errors: any;
+  error?: string;
 }
 
-export function Input({ label, name, type, register, errors }: Props) {
-
+export function Input({ label, name, type, register, error }: Props) {
   return (
     <div className={styles.container}>
       <label className={styles.label} htmlFor={name}>{label}</label>
       <input {...register(name)} className={styles.input} type={type} name={name} />
-      {errors[name] && <p>{errors[name]}</p>}
+      {error && <small>{error}</small>}
     </div>
   )
 }
