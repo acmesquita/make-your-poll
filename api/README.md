@@ -6,6 +6,8 @@ API system.
 
 ```bash
   docker-compose build
-  docker-compose run --rm web rails db:setup
+  docker-compose run --rm web rails db:create
   docker-compose up
 ```
+
+Acess http://localhost:3000
