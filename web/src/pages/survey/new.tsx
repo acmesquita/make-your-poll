@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-key */
 import type { NextPage } from 'next'
-import { Header, SideBar, Container, Breadcrumb, Link } from '../../components'
+import { Header, SideBar, Container, Breadcrumb, Link, Form, Input } from '../../components'
 import styles from '../../styles/pages/Home.module.css'
 
 const Home: NextPage = () => {
@@ -19,6 +19,9 @@ const Home: NextPage = () => {
             ]}
             currentPage="New Survey"
           />
+
+          <Form />
+
         </Container>
       </main>
     </>
