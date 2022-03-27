@@ -29,24 +29,24 @@ In this project to be using docker and docker-compose to up applications.
 
 ### Build project
 
-```
+```bash
 docker-compose build
 ```
 
 ### Initilize Database
 
-```
+```bash
 docker-compose run --rm api bundle exec rails db:create
 docker-compose run --rm api bundle exec rails db:migrate
 ```
 
-### Up projects
+### Running projects
 
-```
+```bash
 docker-compose up
 ```
 
-If all that's rigth, you having database, api and web running. For train access:
+If all that's rigth, you having a database, an api and a web running. For try access:
 
 - API: http://localhost:3000/api/v1/hello
 - Web: http://localhost:3001
