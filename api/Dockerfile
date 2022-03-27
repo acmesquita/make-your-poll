@@ -4,10 +4,10 @@ FROM ruby:latest
 RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -
 RUN apt-get update -qq && apt-get install -y nodejs yarn postgresql-client
 
-WORKDIR /api
+WORKDIR /app
 
-COPY Gemfile /api/Gemfile
-COPY Gemfile.lock /api/Gemfile.lock
+COPY Gemfile /app/Gemfile
+COPY Gemfile.lock /app/Gemfile.lock
 
 RUN bundle install
 
