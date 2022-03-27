@@ -1,4 +1,10 @@
 class Api::V1::PollController < ApplicationController
+
+  def index
+    @polls = Poll::ListPollService.call
+    render json: @polls, status: :ok
+  end
+
   def create
     @poll = Poll::CreatePollService.call(poll_params)
 
