@@ -21,8 +21,32 @@ System to generate your poll 🚀.
 ### Technologies
 
 - Ruby on Rails - backend api
-- NextJS - frontend 
+- NextJS - frontend
 
 ### Getting Started
 
-WIP
+In this project to be using docker and docker-compose to up applications.
+
+### Build project
+
+```
+docker-compose build
+```
+
+### Initilize Database
+
+```
+docker-compose run --rm api bundle exec rails db:create
+docker-compose run --rm api bundle exec rails db:migrate
+```
+
+### Up projects
+
+```
+docker-compose up
+```
+
+If all that's rigth, you having database, api and web running. For train access:
+
+- API: http://localhost:3000/api/v1/hello
+- Web: http://localhost:3001
