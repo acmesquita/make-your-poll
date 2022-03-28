@@ -20,11 +20,15 @@ export function Form() {
 
     const result = await response.json()
 
-    if (result.errors) {
-      setTitleError(result.errors["title"][0])
-      setDescriptionError(result.errors["description"][0])
+    if (response.status === 400 && result.errors) {
+      if (result.errors["title"]) {
+        setTitleError(result.errors["title"][0])
+      }
+      if (result.errors["description"]) {
+        setDescriptionError(result.errors["description"][0])
+      }
     } else {
-      router.push('/')
+      router.push('/survey')
       // redirect to home
     }
   };

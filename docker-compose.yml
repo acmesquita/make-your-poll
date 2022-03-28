@@ -10,7 +10,7 @@ services:
     build: './api/'
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
-      - .:/myapp
+      - ./api:/app
     ports:
       - "3000:3000"
     depends_on:
@@ -19,7 +19,7 @@ services:
     build: './web/'
     command: bash -c "yarn dev"
     volumes:
-      - .:/web
+      - ./web:/app
     ports:
       - "3001:3001"
     depends_on:

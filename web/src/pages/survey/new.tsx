@@ -13,12 +13,14 @@ const Home: NextPage = () => {
           <Breadcrumb
             links={[
               {
-                href: "/",
+                href: "/survey",
                 children: "Survey"
               }
             ]}
             currentPage="New Survey"
           />
+
+          <h2>Create a new poll</h2>
 
           <Form />
 

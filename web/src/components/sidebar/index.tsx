@@ -6,7 +6,7 @@ export function SideBar() {
     <aside className={styles.container}>
       <ul className={styles.list}>
         <li className={styles.listItem}>
-          <h4>Survey</h4>
+          <h4><Link href='/survey'>Survey</Link></h4>
           <ul className={styles.list}>
             <li className={styles.listItem}>
               <Link href='/survey/new'>New Survey</Link>

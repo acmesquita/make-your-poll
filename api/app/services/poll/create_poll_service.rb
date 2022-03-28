@@ -14,7 +14,7 @@ class Poll::CreatePollService
     if !options.blank?
       options.each do |option|
         Option.create({
-          description: option[:descriptiom],
+          description: option[:description],
           poll_id: poll.id
         })
       end
