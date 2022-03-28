@@ -2,6 +2,7 @@ class Api::V1::PollController < ApplicationController
 
   def index
     @polls = Poll::ListPollService.call
+
     render json: @polls, status: :ok
   end
 
@@ -18,6 +19,6 @@ class Api::V1::PollController < ApplicationController
   private
 
   def poll_params
-    params.permit(:title, :description, :options => [])
+    params.require(:poll).permit(:title, :description, :options => [[:description]])
   end
 end
