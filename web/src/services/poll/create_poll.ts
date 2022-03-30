@@ -9,7 +9,6 @@ type BodyData = {
 }
 
 export const createPoll = async (body: BodyData) => {
-  console.log("###########", JSON.stringify(body))
   const response = await api.post('/poll', JSON.stringify({poll: body}))
   return response.data
 }
