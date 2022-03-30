@@ -19,7 +19,6 @@ RSpec.describe 'PollSerializer' do
   end
 
   it 'should have a date that matches' do
-    puts subject
     expect(subject['date']).to eql(@date.strftime("%d/%m/%Y"))
   end
 
