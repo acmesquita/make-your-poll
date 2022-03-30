@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'OptionServialize' do
+RSpec.describe 'OptionSerializer' do
   before(:each) do
     @option = Option.new({ description: 'any', poll_id: 1})
     @serializer = OptionSerializer.new(@option)
