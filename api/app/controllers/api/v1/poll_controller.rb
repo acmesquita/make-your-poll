@@ -6,6 +6,16 @@ class Api::V1::PollController < ApplicationController
     render json: @polls, status: :ok
   end
 
+  def show
+    @poll = Poll::FindPollService.call(params[:id])
+
+    if (@poll.present?)
+      render json: @poll, status: :ok
+    else
+      render json: { errors: "Poll not found" }, status: :bad_request
+    end
+  end
+  nil
   def create
     @poll = Poll::CreatePollService.call(poll_params)
 
