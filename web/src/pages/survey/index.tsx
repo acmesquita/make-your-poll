@@ -1,10 +1,11 @@
 import type { GetServerSideProps, NextPage } from 'next'
-import { Header, SideBar, Container, Breadcrumb, Table, Th, Tr, Td } from '../../components'
+import { Header, SideBar, Container, Breadcrumb, Table, Th, Tr, Td, Link } from '../../components'
 import { listPoll } from '../../services/poll/list_poll'
 import styles from '../../styles/pages/Home.module.css'
+import { Poll } from '../../types/poll'
 
 type Props = {
-  polls: any[]
+  polls: Poll[]
 }
 
 const SurveyList: NextPage<Props> = ({ polls }: Props) => {
@@ -22,6 +23,7 @@ const SurveyList: NextPage<Props> = ({ polls }: Props) => {
             <thead>
               <Th>ID</Th>
               <Th>Title</Th>
+              <Th>Date</Th>
               <Th>Answers</Th>
               <Th>Actions</Th>
             </thead>
@@ -29,7 +31,8 @@ const SurveyList: NextPage<Props> = ({ polls }: Props) => {
               {polls.map(poll => (
                 <Tr key={poll.id}>
                   <Td>{poll.id}</Td>
-                  <Td>{poll.title}</Td>
+                  <Td><Link href={`survey/${poll.id}`}>{poll.title}</Link></Td>
+                  <Td>{poll.date}</Td>
                   <Td>0</Td>
                   <Td>Edit | Delete | Share</Td>
                 </Tr>
