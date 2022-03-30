@@ -5,8 +5,11 @@ RSpec.describe "PollController", type: :request do
     it "returns http created" do
       headers = { "ACCEPT" => "application/json" }
       post "/api/v1/poll", params: {
-        title: Faker::Lorem.words(number: 4, supplemental: true).join(' '),
-        description: Faker::Lorem.words(number: 4, supplemental: true).join(' ')
+        poll: {
+          title: Faker::Lorem.words(number: 4, supplemental: true).join(' '),
+          description: Faker::Lorem.words(number: 4, supplemental: true).join(' '),
+          options: [{ description: 'opt1' }]
+        }
       }, headers: headers
 
       expect(response).to have_http_status(:created)
@@ -15,8 +18,11 @@ RSpec.describe "PollController", type: :request do
     it "returns http bad_request" do
       headers = { "ACCEPT" => "application/json" }
       post "/api/v1/poll", params: {
-        title: "",
-        description: ""
+        poll: {
+          title: "",
+          description: "",
+          option: []
+        }
       }, headers: headers
       expect(response).to have_http_status(:bad_request)
     end
@@ -33,8 +39,11 @@ RSpec.describe "PollController", type: :request do
     it 'should return list with one record' do
       headers = { "ACCEPT" => "application/json" }
       post "/api/v1/poll", params: {
-        title: Faker::Lorem.words(number: 4, supplemental: true).join(' '),
-        description: Faker::Lorem.words(number: 4, supplemental: true).join(' ')
+        poll: {
+          title: Faker::Lorem.words(number: 4, supplemental: true).join(' '),
+          description: Faker::Lorem.words(number: 4, supplemental: true).join(' '),
+          options: [{ description: 'opt1' }]
+        }
       }, headers: headers
 
       poll = response.body
