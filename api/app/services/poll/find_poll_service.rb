@@ -1,10 +1,6 @@
 class Poll::FindPollService
 
-  def self.call(params)
-    if (params[:id].present?)
-      Poll.find(params[:id]) rescue nil
-    else
-      nil
-    end
+  def self.call(id)
+    Poll.find(id) rescue nil
   end
 end

@@ -9,9 +9,9 @@ RSpec.describe 'FindPollService' do
         options: [ { :description => "any_1" } ]
       }
       pollInsert = Poll::CreatePollService.call(params)
-      pollFind = Poll::FindPollService.call({id: pollInsert.id})
+      pollFind = Poll::FindPollService.call(pollInsert.id.to_s)
 
-      expect(pollFind.id).to eq(pollInsert.id)
+      expect(pollFind[:id]).to eq(pollInsert.id)
     end
   end
   describe 'should be return nil' do
