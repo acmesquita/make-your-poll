@@ -10,17 +10,16 @@ import { updatePoll } from '../../services/poll/update_poll';
 
 type Props = {
   poll?: Poll
+  token: string
 }
 
-export function Form({ poll }: Props) {
+export function Form({ poll, token }: Props) {
   const [titleError, setTitleError] = useState('')
   const [descriptionError, setDescriptionError] = useState('')
   const router = useRouter()
   const { handleSubmit, register } = useForm();
 
   const onSubmit = async (data: any) => {
-
-    console.log(data);
 
     const response = await call(data, poll?.id)
 
@@ -38,9 +37,9 @@ export function Form({ poll }: Props) {
 
   async function call(data: any, pollId?: string) {
     if (pollId) {
-      return await updatePoll(pollId, data)
+      return await updatePoll(pollId, data, token)
     } else {
-      return await createPoll(data)
+      return await createPoll(data, token)
     }
   }
 

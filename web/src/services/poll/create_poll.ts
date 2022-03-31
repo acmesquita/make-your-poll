@@ -8,7 +8,12 @@ type BodyData = {
   }]
 }
 
-export const createPoll = async (body: BodyData) => {
-  const response = await api.post('/poll', JSON.stringify({poll: body}))
+export const createPoll = async (body: BodyData, token: string) => {
+
+  const response = await api.post('/poll', JSON.stringify({ poll: body }), {
+    headers: {
+      'Authorization': token,
+    }
+  })
   return response.data
 }

@@ -4,8 +4,9 @@ import { Button, Input, Link } from '../../components'
 import styles from '../../styles/pages/SignUp.module.css'
 import { apiUser } from '../../services/utils/api';
 import { useState } from 'react';
+import { login } from '../../services/utils/auth';
 
-export default function SignUp() {
+export default function Login() {
   const [error, setError] = useState('')
   const router = useRouter()
   const { handleSubmit, register } = useForm();
@@ -15,13 +16,17 @@ export default function SignUp() {
     const data = { user: values }
 
     try {
-      const response = await apiUser.post('/', data)
+      const response = await apiUser.post('/users/sign_in', data)
 
       if (response.status === 200) {
-        router.push('/users/login')
+
+        const token = response.headers["authorization"]
+        await login({ token })
+
+        router.push('/')
       }
     } catch (error) {
-      setError('Username exists, please try another')
+      setError('Username or password invalid.')
     }
   };
 
@@ -34,8 +39,8 @@ export default function SignUp() {
           <Input register={register} label='Username' name='username' type='text' />
           <Input register={register} label='Password' name='password' type='password' />
 
-          <Button>New Account</Button>
-          <Link href='/users/login'>Login</Link>
+          <Button>Login</Button>
+          <Link href='/users/sign_up'>Sing Up</Link>
         </form>
       </div>
     </main>

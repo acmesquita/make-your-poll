@@ -1,5 +1,6 @@
-import type { NextPage } from 'next'
-import { Header, SideBar, Container, Breadcrumb, Link } from '../components'
+import nextCookie from "next-cookies";
+import type { GetServerSideProps, NextPage } from 'next'
+import { Header, SideBar, Container } from '../components'
 import styles from '../styles/pages/Home.module.css'
 
 const Home: NextPage = () => {
@@ -14,6 +15,24 @@ const Home: NextPage = () => {
       </main>
     </>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const { token } = nextCookie(ctx);
+
+  if (!token) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/users/login",
+      },
+      props:{},
+    };
+  }
+
+  return {
+    props: {}
+  }
 }
 
 export default Home

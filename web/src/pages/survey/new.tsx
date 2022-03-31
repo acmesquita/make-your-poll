@@ -1,9 +1,14 @@
 /* eslint-disable react/jsx-key */
-import type { NextPage } from 'next'
+import nextCookie from "next-cookies";
+import type { GetServerSideProps, NextPage } from 'next'
 import { Header, SideBar, Container, Breadcrumb, Link, Form, Input } from '../../components'
 import styles from '../../styles/pages/Home.module.css'
 
-const New: NextPage = () => {
+type Props = {
+  token: string
+}
+
+const New: NextPage<Props> = ({ token }: Props) => {
   return (
     <>
       <Header />
@@ -22,12 +27,32 @@ const New: NextPage = () => {
 
           <h2>Create a new poll</h2>
 
-          <Form />
+          <Form token={token}/>
 
         </Container>
       </main>
     </>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const { token } = nextCookie(ctx);
+
+  if (!token) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/users/login",
+      },
+      props:{},
+    };
+  }
+
+  return {
+    props: {
+      token
+    }
+  }
 }
 
 export default New

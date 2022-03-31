@@ -23,15 +23,15 @@ export default function Answer({ poll }: Props) {
       option_id: option.id
     }
 
-    const result = await apiMutation.post('/answer', data)
+    try {
+      await apiMutation.post('/answer', data)
 
-    if (result.status === 400) {
+      setTimeout(() => {
+        router.push(`/survey/${poll.id}/result`)
+      }, 5000)
+    } catch (error) {
       alert('Erro inesperado aconteceu. Tente novamente mais tarde')
     }
-
-    setTimeout(() => {
-      router.push(`/survey/${poll.id}/result`)
-    }, 5000)
   }
 
   return (
