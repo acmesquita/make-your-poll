@@ -6,5 +6,6 @@ export type Poll = {
   options: {
     id: string
     description: string
+    answers: number
   }[]
 }
