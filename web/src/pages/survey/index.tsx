@@ -34,7 +34,7 @@ const SurveyList: NextPage<Props> = ({ polls }: Props) => {
                   <Td><Link href={`survey/${poll.id}`}>{poll.title}</Link></Td>
                   <Td>{poll.date}</Td>
                   <Td>{poll.options.reduce((acc, option ) => ( acc+= option.answers), 0)}</Td>
-                  <Td><Link href={`survey/${poll.id}/edit`}>Edit</Link> | Share</Td>
+                  <Td><Link href={`survey/${poll.id}/edit`}>Edit</Link> | <Link href={`survey/${poll.id}/answer`}>Share</Link></Td>
                 </Tr>
               ))}
             </tbody>

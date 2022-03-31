@@ -3,9 +3,11 @@ export type Poll = {
   title: string
   description: string
   date: string
-  options: {
-    id: string
-    description: string
-    answers: number
-  }[]
+  options: Option[]
+}
+
+export type Option = {
+  id: string
+  description: string
+  answers: number
 }
