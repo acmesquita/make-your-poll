@@ -3,4 +3,5 @@ class Poll < ApplicationRecord
   validates :description, presence: true, length: { minimum: 6 }
 
   has_many :options, dependent: :destroy
+  has_many :answers, dependent: :destroy
 end

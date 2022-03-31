@@ -110,12 +110,12 @@ RSpec.describe "PollController", type: :request do
 
       put "/api/v1/poll/#{JSON.parse(poll)["id"]}", params: {
         poll: {
-          title: 'any'
+          title: 'um ninho de mafagafos tem mafagafinhos'
         }
       }, headers: headers
 
       expect(response).to have_http_status(:ok)
-      expect(JSON.parse(response.body)["title"]).to eq("any")
+      expect(JSON.parse(response.body)["title"]).to eq("um ninho de mafagafos tem mafagafinhos")
     end
   end
 end

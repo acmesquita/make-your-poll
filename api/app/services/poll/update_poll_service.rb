@@ -15,6 +15,8 @@ class Poll::UpdatePollService
   end
 
   def self.update_options(options)
+    return nil if options.nil?
+
     options.each do |option|
       Option.find(option["id"]).update({ description: option["description"]})
     end
