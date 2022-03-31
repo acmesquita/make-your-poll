@@ -30,11 +30,13 @@ const Show: NextPage<Props> = ({ poll }: Props) => {
           <Table>
             <thead>
               <Th>Options</Th>
+              <Th>Quant Answers</Th>
             </thead>
             <tbody>
               {poll?.options.map(option => (
                 <Tr key={option.description}>
                   <Td>{option.description}</Td>
+                  <Td>{option.answers}</Td>
                 </Tr>
               ))}
             </tbody>
