@@ -2,8 +2,6 @@ import { GetServerSideProps } from "next";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { Button, Input } from "../../../components";
 import { findPoll } from "../../../services/poll/find_poll";
 import { apiMutation } from "../../../services/utils/api";
 import style from '../../../styles/pages/Answer.module.css'
@@ -14,6 +12,7 @@ type Props = {
 }
 
 export default function Answer({ poll }: Props) {
+  const router = useRouter()
   const [selectedOption, setSelectedOption] = useState<Option>()
 
   async function selectOption(option: Option) {
@@ -29,6 +28,10 @@ export default function Answer({ poll }: Props) {
     if (result.status === 400) {
       alert('Erro inesperado aconteceu. Tente novamente mais tarde')
     }
+
+    setTimeout(() => {
+      router.push(`/survey/${poll.id}/result`)
+    }, 5000)
   }
 
   return (

@@ -43,3 +43,9 @@
   background-color: #eef6fd !important;
   color: #979797;
 }
+
+.pieChart {
+  width: 350px;
+  height: 350px;
+  margin-top: 32px;
+}
