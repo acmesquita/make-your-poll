@@ -1,5 +1,7 @@
 class Api::V1::PollController < ApplicationController
 
+  before_action :authenticate_user!, only: [:index, :create, :update]
+
   def index
     @polls = Poll::ListPollService.call
 
