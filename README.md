@@ -8,7 +8,7 @@ System to generate your poll 🚀.
 - [x] 2 - The user should be able to specify a title for the poll, a brief description, and a list of options.
 - [x] 3 - After the poll is created, the user should be able to edit the poll, and modify anything they specified originally.
 - [x] 4 - After the poll is created, the user should be able to share their poll with their friends. This can be as simple as generating a link that they can have other people go to to respond to the poll.
-- [ ] 5 - The user should be able to view a graph of the responses to their poll.
+- [x] 5 - The user should be able to view a graph of the responses to their poll.
 - [ ] 6 - A user responding to a poll should be able to edit their response. (You do not need to authenticate users attempting to edit responses)
 - [ ] 7 - A user should be able to create an account that they can authenticate to with a username and password.
 - [ ] 8 - The only information you need is a username and password. If email addresses are usernames, you do not need to validate the email address.
