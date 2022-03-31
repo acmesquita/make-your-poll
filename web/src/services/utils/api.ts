@@ -15,3 +15,11 @@ export const apiMutation = axios.create({
     'Access-Control-Allow-Origin': '*'
   }
 })
+
+export const apiUser = axios.create({
+  baseURL: 'http://localhost:3000/',
+  headers: {
+    'Content-type': 'application/json;charset=utf-8',
+    'Access-Control-Allow-Origin': '*'
+  }
+})
