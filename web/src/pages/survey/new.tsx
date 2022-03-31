@@ -3,7 +3,7 @@ import type { NextPage } from 'next'
 import { Header, SideBar, Container, Breadcrumb, Link, Form, Input } from '../../components'
 import styles from '../../styles/pages/Home.module.css'
 
-const Home: NextPage = () => {
+const New: NextPage = () => {
   return (
     <>
       <Header />
@@ -30,4 +30,4 @@ const Home: NextPage = () => {
   )
 }
 
-export default Home
+export default New

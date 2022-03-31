@@ -3,7 +3,8 @@ export type Poll = {
   title: string
   description: string
   date: string
-  options: [{
+  options: {
+    id: string
     description: string
-  }]
+  }[]
 }
