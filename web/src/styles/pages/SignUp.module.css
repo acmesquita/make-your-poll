@@ -1,0 +1,40 @@
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #2a2a5c;
+  width: 100%;
+  height: 100vh;
+}
+
+.card {
+  background-color: #FFF;
+  width: 500px;
+  height: 400px;
+  padding: 32px;
+  border-radius: 4px;
+  box-shadow: 0 0 3px 3px #9ba0dd45;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form {
+  margin-top: 32px;
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+
+}
+
+.form > div > input {
+  width: 350px;
+}
+
+.errorMsg {
+  color: red;
+  margin-top: 16px;
+}

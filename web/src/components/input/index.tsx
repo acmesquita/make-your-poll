@@ -4,7 +4,7 @@ import styles from '../../styles/components/input.module.css'
 type Props = {
   label?: string
   name: string
-  type: "text" | "radio"
+  type: "text" | "radio" | "password"
   register: UseFormRegister<FieldValues>
   error?: string;
   defaultValue?: string

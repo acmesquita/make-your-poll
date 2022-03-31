@@ -7,7 +7,6 @@ import { useRouter } from 'next/router';
 import { Poll } from '../../types/poll';
 import { createPoll } from '../../services/poll/create_poll';
 import { updatePoll } from '../../services/poll/update_poll';
-import { AxiosResponse } from 'axios';
 
 type Props = {
   poll?: Poll
