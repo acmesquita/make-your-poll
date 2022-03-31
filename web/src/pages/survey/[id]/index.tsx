@@ -1,4 +1,6 @@
 import type { GetServerSideProps, NextPage } from 'next'
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Pie } from 'react-chartjs-2';
 import { Header, SideBar, Container, Breadcrumb, Table, Th, Tr, Td } from '../../../components'
 import { findPoll } from '../../../services/poll/find_poll'
 import styles from '../../../styles/pages/Home.module.css'
@@ -8,7 +10,52 @@ type Props = {
   poll: Poll
 }
 
+ChartJS.register(ArcElement, Tooltip, Legend);
+
 const Show: NextPage<Props> = ({ poll }: Props) => {
+  const data = {
+    labels: poll.options.map(option => option.description),
+    datasets: [
+      {
+        label: '# of Votes',
+        data: poll.options.map(option => option.answers),
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+        ],
+        borderColor: [
+          'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+        ],
+        borderWidth: 1,
+        options: {
+          animations: {
+            tension: {
+              duration: 1000,
+              easing: 'linear',
+              from: 1,
+              to: 0,
+              loop: true
+            }
+          },
+          scales: {
+            y: { // defining min and max so hiding the dataset does not change scale range
+              min: 0,
+              max: 100
+            }
+          },
+          layout: {
+            autoPadding: true
+          }
+        }
+      },
+    ],
+  };
+
   return (
     <>
       <Header />
@@ -41,6 +88,10 @@ const Show: NextPage<Props> = ({ poll }: Props) => {
               ))}
             </tbody>
           </Table>
+          <div className={styles.pieChart}>
+            <h3>Results</h3>
+            <Pie data={data} />
+          </div>
         </Container>
       </main>
     </>
