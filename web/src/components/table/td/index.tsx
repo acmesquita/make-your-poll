@@ -1,5 +1,5 @@
 type Props = {
-  children: string
+  children: any
 }
 
 export function Td({ children }: Props) {

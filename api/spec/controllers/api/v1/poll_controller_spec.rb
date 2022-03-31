@@ -82,4 +82,40 @@ RSpec.describe "PollController", type: :request do
       expect(response.body).to eq("#{poll}")
     end
   end
+  describe 'PUT /:id' do
+    it 'should return error if have not found' do
+      headers = { "ACCEPT" => "application/json" }
+
+      put "/api/v1/poll/3098210", params: {
+        poll: {
+          title: 'any'
+        }
+      },  headers: headers
+
+      expect(response).to have_http_status(:bad_request)
+      expect(response.body).to eq("{\"errors\":\"Invalid params\"}")
+    end
+
+    it 'should return list with one record' do
+      headers = { "ACCEPT" => "application/json" }
+      post "/api/v1/poll", params: {
+        poll: {
+          title: Faker::Lorem.words(number: 4, supplemental: true).join(' '),
+          description: Faker::Lorem.words(number: 4, supplemental: true).join(' '),
+          options: [{ description: 'opt1' }]
+        }
+      }, headers: headers
+
+      poll = response.body
+
+      put "/api/v1/poll/#{JSON.parse(poll)["id"]}", params: {
+        poll: {
+          title: 'any'
+        }
+      }, headers: headers
+
+      expect(response).to have_http_status(:ok)
+      expect(JSON.parse(response.body)["title"]).to eq("any")
+    end
+  end
 end

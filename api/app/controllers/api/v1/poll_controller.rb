@@ -15,7 +15,7 @@ class Api::V1::PollController < ApplicationController
       render json: { errors: "Poll not found" }, status: :bad_request
     end
   end
-  nil
+
   def create
     @poll = Poll::CreatePollService.call(poll_params)
 
@@ -26,9 +26,23 @@ class Api::V1::PollController < ApplicationController
     end
   end
 
+  def update
+    @poll = Poll::UpdatePollService.call(params[:id], update_poll_params)
+
+    if !@poll.nil?
+      render json: @poll, status: :ok
+    else
+      render json: { errors: 'Invalid params' }, status: :bad_request
+    end
+  end
+
   private
 
   def poll_params
     params.require(:poll).permit(:title, :description, :options => [[:description]])
+  end
+
+  def update_poll_params
+    params.require(:poll).permit!
   end
 end
