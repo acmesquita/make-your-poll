@@ -8,9 +8,13 @@ RSpec.describe 'UpdatePollService' do
       }
       pollInsert = Poll::CreatePollService.call(params)
 
-      pollUpdate = Poll::UpdatePollService.call(pollInsert.id.to_s, {title: 'any'})
+      pollUpdate = Poll::UpdatePollService.call(pollInsert.id.to_s, {
+        title: 'um ninho de mafagafos tem mafagafinhos',
+        description: 'um ninho de mafagafos tem mafagafinhos'
+    }.as_json)
 
-      expect(pollUpdate[:title]).to eq('any')
+      expect(pollUpdate[:title]).to eq('um ninho de mafagafos tem mafagafinhos')
+      expect(pollUpdate[:description]).to eq('um ninho de mafagafos tem mafagafinhos')
     end
   end
   describe 'should be return nil' do
