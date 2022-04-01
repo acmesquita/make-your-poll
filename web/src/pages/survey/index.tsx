@@ -1,3 +1,5 @@
+import React from "react";
+import nextCookie from "next-cookies";
 import type { GetServerSideProps, NextPage } from 'next'
 import { Header, SideBar, Container, Breadcrumb, Table, Th, Tr, Td, Link } from '../../components'
 import { listPoll } from '../../services/poll/list_poll'
@@ -45,9 +47,21 @@ const SurveyList: NextPage<Props> = ({ polls }: Props) => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const { token } = nextCookie(ctx);
 
-  const polls = await listPoll()
+  if (!token) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/users/login",
+      },
+      props:{},
+    };
+  }
+
+  const polls = await listPoll(token)
+
   return {
     props: {
       polls
@@ -55,4 +69,4 @@ export const getServerSideProps: GetServerSideProps = async () => {
   }
 }
 
-export default SurveyList
+export default SurveyList;

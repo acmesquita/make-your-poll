@@ -9,9 +9,13 @@ type BodyData = {
   }]
 }
 
-export const updatePoll = async (id: string, body: BodyData) => {
+export const updatePoll = async (id: string, body: BodyData, token: string) => {
   try {
-    const response = await api.patch(`/poll/${id}`, { poll: { ...body } })
+    const response = await api.patch(`/poll/${id}`, { poll: { ...body } }, {
+      headers: {
+        'Authorization': token
+      }
+    })
     return response.data
   } catch (error) {
     console.error(error)

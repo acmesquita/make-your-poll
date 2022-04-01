@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { findPoll } from "../../../services/poll/find_poll";
-import { apiMutation } from "../../../services/utils/api";
+import { apiLocal, apiMutation } from "../../../services/utils/api";
 import style from '../../../styles/pages/Answer.module.css'
 import { Option, Poll } from "../../../types/poll";
 
@@ -23,15 +23,15 @@ export default function Answer({ poll }: Props) {
       option_id: option.id
     }
 
-    const result = await apiMutation.post('/answer', data)
+    try {
+      await apiLocal.post('/api/answer', data)
 
-    if (result.status === 400) {
+      setTimeout(() => {
+        router.push(`/survey/${poll.id}/result`)
+      }, 5000)
+    } catch (error) {
       alert('Erro inesperado aconteceu. Tente novamente mais tarde')
     }
-
-    setTimeout(() => {
-      router.push(`/survey/${poll.id}/result`)
-    }, 5000)
   }
 
   return (

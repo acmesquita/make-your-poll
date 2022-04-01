@@ -1,3 +1,4 @@
+import nextCookie from "next-cookies";
 import type { GetServerSideProps, NextPage } from 'next'
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
@@ -99,6 +100,18 @@ const Show: NextPage<Props> = ({ poll }: Props) => {
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { token } = nextCookie(context);
+
+  if (!token) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/users/login",
+      },
+      props:{},
+    };
+  }
+
   const { id } = context.query
   if (!id) {
     return {

@@ -1,4 +1,5 @@
 /* eslint-disable react/jsx-key */
+import nextCookie from "next-cookies";
 import type { GetServerSideProps, NextPage } from 'next'
 import { Header, SideBar, Container, Breadcrumb, Link, Form, Input } from '../../../components'
 import { findPoll } from '../../../services/poll/find_poll'
@@ -28,7 +29,7 @@ const Edit: NextPage<Props> = ({ poll }: Props) => {
 
           <h2>Edit a poll</h2>
 
-          <Form poll={poll} />
+          <Form poll={poll}/>
 
         </Container>
       </main>
@@ -37,6 +38,18 @@ const Edit: NextPage<Props> = ({ poll }: Props) => {
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { token } = nextCookie(context);
+
+  if (!token) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/users/login",
+      },
+      props:{},
+    };
+  }
+
   const { id } = context.query
   if (!id) {
     return {
