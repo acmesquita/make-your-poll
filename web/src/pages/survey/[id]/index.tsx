@@ -122,7 +122,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       redirect: '/survey'
     }
   }
-  const poll = await findPoll(id as string)
+  try {
+    const poll = await findPoll(id as string)
 
   return {
     props: {
@@ -130,6 +131,16 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       username
     }
   }
+  } catch (error) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/survey",
+      },
+      props:{},
+    };
+  }
+
 }
 
 export default Show

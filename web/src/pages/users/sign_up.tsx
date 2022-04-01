@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/router';
 import { Button, Input, Link } from '../../components'
 import styles from '../../styles/pages/SignUp.module.css'
-import { apiUser } from '../../services/utils/api';
+import { apiLocal, apiUser } from '../../services/utils/api';
 import { useState } from 'react';
 
 export default function SignUp() {
@@ -15,11 +15,9 @@ export default function SignUp() {
     const data = { user: values }
 
     try {
-      const response = await apiUser.post('/', data)
+      await apiLocal.post('/api/users/sign_up', data)
+      router.push('/users/login')
 
-      if (response.status === 200) {
-        router.push('/users/login')
-      }
     } catch (error) {
       setError('Username exists, please try another')
     }
