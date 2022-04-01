@@ -14,8 +14,8 @@ System to generate your poll 🚀.
 - [x] 8 - The only information you need is a username and password. If email addresses are usernames, you do not need to validate the email address.
 - [x] 9 - Passwords must be securely stored.
 - [x] 10 - Rate-limiting of authentication requests and account lockout do not need to be implemented.
-- [ ] 11 - A user should be able to associate all of their previously created polls with that account.
-- [ ] 12 - The user, when authenticated, should be able to view all of the polls associated with their account.
+- [x] 11 - A user should be able to associate all of their previously created polls with that account.
+- [x] 12 - The user, when authenticated, should be able to view all of the polls associated with their account.
 - [ ] 13 - The user should be able to require all respondents to their polls authenticate before being able to respond to the poll.
 
 ### Technologies
