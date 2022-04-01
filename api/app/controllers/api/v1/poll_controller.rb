@@ -3,7 +3,7 @@ class Api::V1::PollController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create, :update]
 
   def index
-    @polls = Poll::ListPollService.call
+    @polls = Poll::ListPollService.call(current_user)
 
     render json: @polls, status: :ok
   end
@@ -19,7 +19,7 @@ class Api::V1::PollController < ApplicationController
   end
 
   def create
-    @poll = Poll::CreatePollService.call(poll_params)
+    @poll = Poll::CreatePollService.call(poll_params.merge({ user_id: current_user.id}))
 
     if @poll.errors.blank?
       render json: @poll, status: :created

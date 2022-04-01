@@ -5,6 +5,8 @@ class User < ApplicationRecord
         jwt_revocation_strategy: JwtDenylist,
         :authentication_keys => [:username]
 
+  has_many :polls, dependent: :destroy
+
   def email_required?
     false
   end
