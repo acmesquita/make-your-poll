@@ -50,3 +50,9 @@ If all that's rigth, you having a database, an api and a web running. For try ac
 
 - API: http://localhost:3000/api/v1/hello
 - Web: http://localhost:3001
+
+### Previews
+
+#### Answer poll
+
+![Peek 01-04-2022 14-43](https://user-images.githubusercontent.com/15862643/161315135-35b15507-b2b6-4d55-bd62-6186314acaf1.gif)
