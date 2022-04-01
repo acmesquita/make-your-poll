@@ -1,10 +1,10 @@
 import Router from 'next/router'
 import nextCookie from 'next-cookies'
 import cookie from 'js-cookie'
-import React, { useEffect } from 'react'
 
-export const login = ({ token }: { token: string}) => {
+export const login = ({ token, username }: { token: string, username: string }) => {
   cookie.set('token', token, { expires: 1 })
+  cookie.set('username', username, { expires: 1 })
   Router.push('/')
 }
 
@@ -26,7 +26,8 @@ export const auth = (ctx: { res?: any; req?: { headers: { cookie?: string | unde
 
 export const logout = () => {
   cookie.remove('token')
+  cookie.remove('username')
   // to support logging out from all windows
   window.localStorage.setItem('logout', Date.now().toString())
-  Router.push('/login')
+  Router.push('/users/login')
 }

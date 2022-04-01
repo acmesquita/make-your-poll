@@ -1,4 +1,4 @@
-import { apiMutation as api } from "../utils/api"
+import { api } from "../utils/api"
 
 type BodyData = {
   title: string

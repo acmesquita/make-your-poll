@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/router';
 import { Button, Input, Link } from '../../components'
 import styles from '../../styles/pages/SignUp.module.css'
-import { apiUser } from '../../services/utils/api';
+import { apiLocal } from '../../services/utils/api';
 import { useState } from 'react';
 import { login } from '../../services/utils/auth';
 
@@ -16,12 +16,14 @@ export default function Login() {
     const data = { user: values }
 
     try {
-      const response = await apiUser.post('/users/sign_in', data)
+      const response = await apiLocal.post('/api/users/login', data)
 
       if (response.status === 200) {
 
-        const token = response.headers["authorization"]
-        await login({ token })
+        console.log(response.data)
+
+        const { token, username } = response.data
+        login({ token, username })
 
         router.push('/')
       }

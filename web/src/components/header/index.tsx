@@ -1,12 +1,18 @@
+import { logout } from '../../services/utils/auth'
 import styles from '../../styles/components/header.module.css'
+import { Link } from '../link'
 
-export function Header() {
+type Props = {
+  username: string
+}
+
+export function Header({ username }: Props) {
 
   return (
     <nav className={styles.container}>
-      <h1>Make your Survey</h1>
+      <h1><Link href='/'>Make your Survey</Link></h1>
       <div>
-        <p>Catharina Mesquita</p>
+        <p>{username}, <Link href='#' onClick={logout}>logout?</Link></p>
       </div>
     </nav>
   )

@@ -8,12 +8,13 @@ import { Poll } from '../../types/poll'
 
 type Props = {
   polls: Poll[]
+  username: string
 }
 
-const SurveyList: NextPage<Props> = ({ polls }: Props) => {
+const SurveyList: NextPage<Props> = ({ polls, username }: Props) => {
   return (
     <>
-      <Header />
+      <Header username={username}/>
       <main className={styles.main}>
         <SideBar />
         <Container>
@@ -48,7 +49,7 @@ const SurveyList: NextPage<Props> = ({ polls }: Props) => {
 }
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const { token } = nextCookie(ctx);
+  const { token, username } = nextCookie(ctx);
 
   if (!token) {
     return {
@@ -64,7 +65,8 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
   return {
     props: {
-      polls
+      polls,
+      username
     }
   }
 }

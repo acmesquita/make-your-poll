@@ -5,13 +5,13 @@ import { Header, SideBar, Container, Breadcrumb, Link, Form, Input } from '../..
 import styles from '../../styles/pages/Home.module.css'
 
 type Props = {
-  token: string
+  username: string
 }
 
-const New: NextPage<Props> = ({ token }: Props) => {
+const New: NextPage<Props> = ({ username }: Props) => {
   return (
     <>
-      <Header />
+      <Header username={username}/>
       <main className={styles.main}>
         <SideBar />
         <Container>
@@ -36,7 +36,7 @@ const New: NextPage<Props> = ({ token }: Props) => {
 }
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const { token } = nextCookie(ctx);
+  const { token, username } = nextCookie(ctx);
 
   if (!token) {
     return {
@@ -49,7 +49,9 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   }
 
   return {
-    props: {}
+    props: {
+      username
+    }
   }
 }
 
