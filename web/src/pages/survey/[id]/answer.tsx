@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { findPoll } from "../../../services/poll/find_poll";
-import { apiMutation } from "../../../services/utils/api";
+import { apiLocal, apiMutation } from "../../../services/utils/api";
 import style from '../../../styles/pages/Answer.module.css'
 import { Option, Poll } from "../../../types/poll";
 
@@ -24,7 +24,7 @@ export default function Answer({ poll }: Props) {
     }
 
     try {
-      await apiMutation.post('/answer', data)
+      await apiLocal.post('/api/answer', data)
 
       setTimeout(() => {
         router.push(`/survey/${poll.id}/result`)

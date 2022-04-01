@@ -8,10 +8,9 @@ import { Poll } from '../../../types/poll'
 
 type Props = {
   poll: Poll
-  token: string
 }
 
-const Edit: NextPage<Props> = ({ poll, token }: Props) => {
+const Edit: NextPage<Props> = ({ poll }: Props) => {
   return (
     <>
       <Header />
@@ -30,7 +29,7 @@ const Edit: NextPage<Props> = ({ poll, token }: Props) => {
 
           <h2>Edit a poll</h2>
 
-          <Form poll={poll} token={token}/>
+          <Form poll={poll}/>
 
         </Container>
       </main>
@@ -64,8 +63,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   return {
     props: {
-      poll,
-      token
+      poll
     }
   }
 }

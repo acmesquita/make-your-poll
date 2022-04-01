@@ -5,41 +5,40 @@ import styles from '../../styles/components/form.module.css'
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { Poll } from '../../types/poll';
-import { createPoll } from '../../services/poll/create_poll';
-import { updatePoll } from '../../services/poll/update_poll';
+import { apiLocal } from '../../services/utils/api';
+import { AxiosResponse } from 'axios';
 
 type Props = {
   poll?: Poll
-  token: string
 }
 
-export function Form({ poll, token }: Props) {
+export function Form({ poll }: Props) {
   const [titleError, setTitleError] = useState('')
   const [descriptionError, setDescriptionError] = useState('')
   const router = useRouter()
   const { handleSubmit, register } = useForm();
 
   const onSubmit = async (data: any) => {
-
     const response = await call(data, poll?.id)
+    const responseData = response.data
 
-    if (response.status === 400 && response.errors) {
-      if (response.errors["title"]) {
-        setTitleError(response.errors["title"][0])
+    if (response.status === 400 && responseData.errors) {
+      if (responseData.errors["title"]) {
+        setTitleError(responseData.errors["title"][0])
       }
-      if (response.errors["description"]) {
-        setDescriptionError(response.errors["description"][0])
+      if (responseData.errors["description"]) {
+        setDescriptionError(responseData.errors["description"][0])
       }
     } else {
       router.push('/survey')
     }
   };
 
-  async function call(data: any, pollId?: string) {
+  async function call(data: any, pollId?: string): Promise<AxiosResponse<{errors: any}>> {
     if (pollId) {
-      return await updatePoll(pollId, data, token)
+      return await apiLocal.put(`/api/survey/${pollId}`, data)
     } else {
-      return await createPoll(data, token)
+      return await apiLocal.post('/api/survey', data)
     }
   }
 

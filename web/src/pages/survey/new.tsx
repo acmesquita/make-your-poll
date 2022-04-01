@@ -27,7 +27,7 @@ const New: NextPage<Props> = ({ token }: Props) => {
 
           <h2>Create a new poll</h2>
 
-          <Form token={token}/>
+          <Form />
 
         </Container>
       </main>
@@ -49,9 +49,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   }
 
   return {
-    props: {
-      token
-    }
+    props: {}
   }
 }
 
