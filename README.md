@@ -56,3 +56,8 @@ If all that's rigth, you having a database, an api and a web running. For try ac
 #### Answer poll
 
 ![Peek 01-04-2022 14-43](https://user-images.githubusercontent.com/15862643/161315135-35b15507-b2b6-4d55-bd62-6186314acaf1.gif)
+
+#### Manager poll
+
+![Peek 01-04-2022 15-27](https://user-images.githubusercontent.com/15862643/161321394-335c72ff-53a3-4c1f-8bde-95bf0098d88c.gif)
+
