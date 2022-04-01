@@ -8,12 +8,13 @@ import styles from '../../../styles/pages/Home.module.css'
 import { Poll } from '../../../types/poll'
 
 type Props = {
-  poll: Poll
+  poll: Poll,
+  username: string
 }
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const Show: NextPage<Props> = ({ poll }: Props) => {
+const Show: NextPage<Props> = ({ poll, username }: Props) => {
   const data = {
     labels: poll.options.map(option => option.description),
     datasets: [
@@ -59,7 +60,7 @@ const Show: NextPage<Props> = ({ poll }: Props) => {
 
   return (
     <>
-      <Header />
+      <Header username={username}/>
       <main className={styles.main}>
         <SideBar />
         <Container>
@@ -100,7 +101,7 @@ const Show: NextPage<Props> = ({ poll }: Props) => {
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { token } = nextCookie(context);
+  const { token, username } = nextCookie(context);
 
   if (!token) {
     return {
@@ -125,7 +126,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   return {
     props: {
-      poll
+      poll,
+      username
     }
   }
 }

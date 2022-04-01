@@ -7,13 +7,14 @@ import styles from '../../../styles/pages/Home.module.css'
 import { Poll } from '../../../types/poll'
 
 type Props = {
-  poll: Poll
+  poll: Poll,
+  username: string
 }
 
-const Edit: NextPage<Props> = ({ poll }: Props) => {
+const Edit: NextPage<Props> = ({ poll, username }: Props) => {
   return (
     <>
-      <Header />
+      <Header username={username}/>
       <main className={styles.main}>
         <SideBar />
         <Container>
@@ -38,7 +39,7 @@ const Edit: NextPage<Props> = ({ poll }: Props) => {
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { token } = nextCookie(context);
+  const { token, username } = nextCookie(context);
 
   if (!token) {
     return {
@@ -63,7 +64,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   return {
     props: {
-      poll
+      poll,
+      username
     }
   }
 }

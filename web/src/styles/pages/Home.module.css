@@ -12,3 +12,22 @@
   flex-direction: column;
   gap: 32px;
 }
+
+.card {
+  padding: 32px;
+  background-color: #fff;
+  min-width: 250px;
+  word-wrap: normal;
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: 0 0 3px 3px #9ba0dd45;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cardWrapper {
+  display: flex;
+  gap: 32px;
+  margin-top: 48px;
+}
