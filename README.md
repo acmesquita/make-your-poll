@@ -18,6 +18,11 @@ System to generate your poll 🚀.
 - [x] 12 - The user, when authenticated, should be able to view all of the polls associated with their account.
 - [ ] 13 - The user should be able to require all respondents to their polls authenticate before being able to respond to the poll.
 
+#### Extras
+
+- [ ] Close a poll. The user to create a poll can finish a poll and nobody can access to answer.
+- [ ] Shows the adherence of responses over the days through a graph on a poll's viewing screen
+
 ### Technologies
 
 - Ruby on Rails - backend api
