@@ -2,7 +2,8 @@ class Poll::CreatePollService
   def self.call(params)
     poll = Poll.create({
       title: params[:title],
-      description: params[:description]
+      description: params[:description],
+      user_id: params[:user_id]
     })
     self.create_options(poll, params[:options])
     poll

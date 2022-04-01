@@ -10,7 +10,6 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
     const response = await updatePoll(pollId, data, token)
     res.json(response)
   } catch (error) {
-    console.log(error)
     res.status(500).json({ error: error })
   }
 }

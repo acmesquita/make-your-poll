@@ -1,6 +1,6 @@
 class Poll::ListPollService
 
-  def self.call()
-    Poll.all
+  def self.call(user)
+    user.polls
   end
 end
