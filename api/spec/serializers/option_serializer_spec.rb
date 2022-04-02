@@ -18,4 +18,7 @@ RSpec.describe 'OptionSerializer' do
   it 'should have a description that matches' do
     expect(subject['description']).to eql(@option.description)
   end
+  it 'should have a count answers' do
+    expect(subject['answers']).to eql(0)
+  end
 end
