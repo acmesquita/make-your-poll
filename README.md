@@ -1,5 +1,3 @@
-[![Docker Image CI](https://github.com/acmesquita/make-your-poll/actions/workflows/docker-image.yml/badge.svg?branch=main)](https://github.com/acmesquita/make-your-poll/actions/workflows/docker-image.yml)
-
 # Make your poll
 
 System to generate your poll 🚀.
