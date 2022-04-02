@@ -17,7 +17,8 @@ RSpec.describe Option, type: :model do
     end
   end
   it "should be create a new Option if the values provided are valid" do
-    poll = Poll.create!({ title: 'Teste teste', description: 'Teste teste'})
+    user = User.create({username: 'xpto', password: '12345678'})
+    poll = Poll.create!({ title: 'Teste teste', description: 'Teste teste', user: user})
     option = Option.create!({ description: 'any', poll_id: poll.id})
 
     expect(option).to be_valid
