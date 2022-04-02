@@ -22,7 +22,7 @@ const Home: NextPage<Props> = ({ polls, username }) => {
           <h1>Dashboard</h1>
           <div className={styles.cardWrapper}>
             <div className={styles.card}>
-              <h3><Link href="/survey">Total surveys</Link></h3>
+              <h3><Link href="/poll">Total polls</Link></h3>
               <p>{countPolls}</p>
             </div>
             <div className={styles.card}>

@@ -71,6 +71,7 @@ export default function Result({ poll }: Props) {
       </section>
       <section className={style.section}>
         <h2>{poll.title}</h2>
+        <br />
         <p>{poll.description}</p>
         <div className={style.pieChart}>
           <Pie data={data} />
@@ -87,7 +88,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       props: {
         poll: {}
       },
-      redirect: '/survey'
+      redirect: '/poll'
     }
   }
   const poll = await findPoll(id as string)

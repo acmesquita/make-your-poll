@@ -27,7 +27,7 @@ export default function Answer({ poll }: Props) {
       await apiLocal.post('/api/answer', data)
 
       setTimeout(() => {
-        router.push(`/survey/${poll.id}/result`)
+        router.push(`/poll/${poll.id}/result`)
       }, 1000)
     } catch (error) {
       alert('Erro inesperado aconteceu. Tente novamente mais tarde')
@@ -48,6 +48,7 @@ export default function Answer({ poll }: Props) {
       </section>
       <section className={style.section}>
         <h2>{poll.title}</h2>
+        <br />
         <p>{poll.description}</p>
         <ul className={style.list}>
           {poll.options.map(option => (

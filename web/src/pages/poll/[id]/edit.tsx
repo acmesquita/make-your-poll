@@ -21,11 +21,11 @@ const Edit: NextPage<Props> = ({ poll, username }: Props) => {
           <Breadcrumb
             links={[
               {
-                href: "/survey",
-                children: "Survey"
+                href: "/poll",
+                children: "Poll"
               }
             ]}
-            currentPage="Edit Survey"
+            currentPage="Edit poll"
           />
 
           <h2>Edit a poll</h2>
@@ -57,7 +57,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       props: {
         poll: {}
       },
-      redirect: '/survey'
+      redirect: '/poll'
     }
   }
   try {
@@ -73,7 +73,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     return {
       redirect: {
         permanent: false,
-        destination: "/survey",
+        destination: "/poll",
       },
       props:{},
     };

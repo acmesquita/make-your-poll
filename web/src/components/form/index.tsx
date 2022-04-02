@@ -30,15 +30,15 @@ export function Form({ poll }: Props) {
         setDescriptionError(responseData.errors["description"][0])
       }
     } else {
-      router.push('/survey')
+      router.push('/poll')
     }
   };
 
   async function call(data: any, pollId?: string): Promise<AxiosResponse<{errors: any}>> {
     if (pollId) {
-      return await apiLocal.put(`/api/survey/${pollId}`, data)
+      return await apiLocal.put(`/api/poll/${pollId}`, data)
     } else {
-      return await apiLocal.post('/api/survey', data)
+      return await apiLocal.post('/api/poll', data)
     }
   }
 

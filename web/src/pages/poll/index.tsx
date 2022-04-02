@@ -11,7 +11,7 @@ type Props = {
   username: string
 }
 
-const SurveyList: NextPage<Props> = ({ polls, username }: Props) => {
+const PollList: NextPage<Props> = ({ polls, username }: Props) => {
   return (
     <>
       <Header username={username}/>
@@ -19,9 +19,9 @@ const SurveyList: NextPage<Props> = ({ polls, username }: Props) => {
         <SideBar />
         <Container>
           <Breadcrumb
-            currentPage="Survey"
+            currentPage="Poll"
           />
-          <h2>Survey</h2>
+          <h2>Poll</h2>
           <Table>
             <thead>
               <Th>ID</Th>
@@ -34,10 +34,10 @@ const SurveyList: NextPage<Props> = ({ polls, username }: Props) => {
               {polls.map(poll => (
                 <Tr key={poll.id}>
                   <Td>{poll.id}</Td>
-                  <Td><Link href={`survey/${poll.id}`}>{poll.title}</Link></Td>
+                  <Td><Link href={`poll/${poll.id}`}>{poll.title}</Link></Td>
                   <Td>{poll.date}</Td>
                   <Td>{poll.options.reduce((acc, option ) => ( acc+= option.answers), 0)}</Td>
-                  <Td><Link href={`survey/${poll.id}/edit`}>Edit</Link> | <Link href={`survey/${poll.id}/answer`}>Share</Link></Td>
+                  <Td><Link href={`poll/${poll.id}/edit`}>Edit</Link> | <Link href={`poll/${poll.id}/answer`}>Share</Link></Td>
                 </Tr>
               ))}
             </tbody>
@@ -71,4 +71,4 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   }
 }
 
-export default SurveyList;
+export default PollList;

@@ -18,11 +18,11 @@ const New: NextPage<Props> = ({ username }: Props) => {
           <Breadcrumb
             links={[
               {
-                href: "/survey",
-                children: "Survey"
+                href: "/poll",
+                children: "Poll"
               }
             ]}
-            currentPage="New Survey"
+            currentPage="New poll"
           />
 
           <h2>Create a new poll</h2>

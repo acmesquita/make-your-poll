@@ -1,4 +1,4 @@
-# Make your Survey API
+# Make your Poll API
 
 API system.
 

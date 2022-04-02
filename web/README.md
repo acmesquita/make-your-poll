@@ -1,4 +1,4 @@
-# Make your survey
+# Make your poll
 
 System to generate your poll 🚀.
 

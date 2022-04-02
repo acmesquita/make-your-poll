@@ -35,7 +35,7 @@ export default function Login() {
   return (
     <main className={styles.main}>
       <div className={styles.card}>
-        <h1>Make your survey</h1>
+        <h1>Make your poll</h1>
         {error && (<p className={styles.errorMsg}>{error}</p>)}
         <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
           <Input register={register} label='Username' name='username' type='text' />

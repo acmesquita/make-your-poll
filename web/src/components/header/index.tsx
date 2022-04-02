@@ -10,7 +10,7 @@ export function Header({ username }: Props) {
 
   return (
     <nav className={styles.container}>
-      <h1><Link href='/'>Make your Survey</Link></h1>
+      <h1><Link href='/'>Make your Poll</Link></h1>
       <div>
         <p>{username}, <Link href='#' onClick={logout}>logout?</Link></p>
       </div>
