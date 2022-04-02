@@ -64,5 +64,6 @@ If all that's rigth, you having a database, an api and a web running. For try ac
 
 #### Manager poll
 
-![Peek 01-04-2022 15-27](https://user-images.githubusercontent.com/15862643/161321394-335c72ff-53a3-4c1f-8bde-95bf0098d88c.gif)
+![Peek 02-04-2022 20-03](https://user-images.githubusercontent.com/15862643/161404210-1844c0d7-8cc1-45e6-8acc-2338eaca6b88.gif)
+
 
