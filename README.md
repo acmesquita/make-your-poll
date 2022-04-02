@@ -45,6 +45,12 @@ docker-compose run --rm api bundle exec rails db:create
 docker-compose run --rm api bundle exec rails db:migrate
 ```
 
+### Runnig tests
+
+```bash
+docker-compose run --rm api bundle exec rspec
+```
+
 ### Running projects
 
 ```bash
