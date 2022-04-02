@@ -3,9 +3,11 @@ require 'rails_helper'
 RSpec.describe 'AnswerAPollService' do
   describe 'should be return answer provider correctly params' do
     it 'when poll id and option id is valid' do
+      user = User.create({username: 'xpto', password: '12345678'})
       params = {
         title: Faker::Lorem.words(number: 4, supplemental: true).join(' '),
         description: Faker::Lorem.words(number: 4, supplemental: true).join(' '),
+        user_id: user.id,
         options: [ { :description => "any_1" } ]
       }
       poll = Poll::CreatePollService.call(params)
