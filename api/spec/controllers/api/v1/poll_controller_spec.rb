@@ -1,9 +1,32 @@
 require 'rails_helper'
 
 RSpec.describe "PollController", type: :request do
+  before(:all) do
+    headers = { "ACCEPT" => "application/json" }
+
+    begin
+      post '/users', params: {
+        user: {
+          username: 'xpot',
+          password: '12345678'
+        }
+      }, headers: headers
+    rescue => exception
+
+    end
+
+    post '/users/sign_in', params: {
+      user: {
+        username: 'xpot',
+        password: '12345678'
+      }
+    }, headers: headers
+
+    @token = response.headers["authorization"]
+  end
   describe "POST /" do
     it "returns http created" do
-      headers = { "ACCEPT" => "application/json" }
+      headers = { "ACCEPT" => "application/json", "Authorization" => @token }
       post "/api/v1/poll", params: {
         poll: {
           title: Faker::Lorem.words(number: 4, supplemental: true).join(' '),
@@ -16,7 +39,7 @@ RSpec.describe "PollController", type: :request do
     end
 
     it "returns http bad_request" do
-      headers = { "ACCEPT" => "application/json" }
+      headers = { "ACCEPT" => "application/json", "Authorization" => @token }
       post "/api/v1/poll", params: {
         poll: {
           title: "",
@@ -29,7 +52,7 @@ RSpec.describe "PollController", type: :request do
   end
   describe 'GET /' do
     it 'should return list empty if have not records' do
-      headers = { "ACCEPT" => "application/json" }
+      headers = { "ACCEPT" => "application/json", "Authorization" => @token }
       get '/api/v1/poll', headers: headers
 
       expect(response).to have_http_status(:ok)
@@ -37,7 +60,8 @@ RSpec.describe "PollController", type: :request do
     end
 
     it 'should return list with one record' do
-      headers = { "ACCEPT" => "application/json" }
+      headers = { "ACCEPT" => "application/json", "Authorization" => @token }
+
       post "/api/v1/poll", params: {
         poll: {
           title: Faker::Lorem.words(number: 4, supplemental: true).join(' '),
@@ -56,7 +80,7 @@ RSpec.describe "PollController", type: :request do
   end
   describe 'GET /:id' do
     it 'should return error if have not found' do
-      headers = { "ACCEPT" => "application/json" }
+      headers = { "ACCEPT" => "application/json", "Authorization" => @token }
 
       get "/api/v1/poll/3098210", headers: headers
 
@@ -65,7 +89,8 @@ RSpec.describe "PollController", type: :request do
     end
 
     it 'should return list with one record' do
-      headers = { "ACCEPT" => "application/json" }
+      headers = { "ACCEPT" => "application/json", "Authorization" => @token }
+
       post "/api/v1/poll", params: {
         poll: {
           title: Faker::Lorem.words(number: 4, supplemental: true).join(' '),
@@ -84,7 +109,8 @@ RSpec.describe "PollController", type: :request do
   end
   describe 'PUT /:id' do
     it 'should return error if have not found' do
-      headers = { "ACCEPT" => "application/json" }
+      headers = { "ACCEPT" => "application/json", "Authorization" => @token }
+
 
       put "/api/v1/poll/3098210", params: {
         poll: {
@@ -97,7 +123,8 @@ RSpec.describe "PollController", type: :request do
     end
 
     it 'should return list with one record' do
-      headers = { "ACCEPT" => "application/json" }
+      headers = { "ACCEPT" => "application/json", "Authorization" => @token }
+
       post "/api/v1/poll", params: {
         poll: {
           title: Faker::Lorem.words(number: 4, supplemental: true).join(' '),

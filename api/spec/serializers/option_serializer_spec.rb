@@ -2,7 +2,13 @@ require 'rails_helper'
 
 RSpec.describe 'OptionSerializer' do
   before(:each) do
-    @option = Option.new({ description: 'any', poll_id: 1})
+    user = User.create({username: 'xpto', password: '12345678'})
+    poll = Poll.create({
+      title: 'What is the best food in the world?',
+      description: 'From the options below, choose what would be your favorite food.',
+      user: user
+    })
+    @option = Option.new({ description: 'any', poll_id: poll.id})
     @serializer = OptionSerializer.new(@option)
     @serialization = ActiveModelSerializers::Adapter.create(@serializer)
   end
@@ -11,5 +17,8 @@ RSpec.describe 'OptionSerializer' do
 
   it 'should have a description that matches' do
     expect(subject['description']).to eql(@option.description)
+  end
+  it 'should have a count answers' do
+    expect(subject['answers']).to eql(0)
   end
 end

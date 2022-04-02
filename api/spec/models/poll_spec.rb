@@ -18,12 +18,24 @@ RSpec.describe Poll, type: :model do
       expect(poll).to_not be_valid
       expect(poll.errors[:description].first).to eq('is too short (minimum is 6 characters)')
     end
+
+    it 'when provider title and description correctly, but not user' do
+      poll = Poll.create({
+        title: 'What is the best food in the world?',
+        description: 'What is the best food in the world?'
+      })
+      expect(poll).to_not be_valid
+      expect(poll.errors[:user].first).to eq('must exist')
+    end
   end
 
   it "should be create a new Poll if the values provided are valid" do
+    user = User.create({username: 'xpto', password: '12345678'})
+
     poll = Poll.create({
       title: 'What is the best food in the world?',
-      description: 'From the options below, choose what would be your favorite food.'
+      description: 'From the options below, choose what would be your favorite food.',
+      user: user
     })
     expect(poll).to be_valid
     expect(poll.id).to_not be_nil

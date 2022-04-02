@@ -6,7 +6,8 @@ RSpec.describe Answer, type: :model do
       expect(Answer.create).to_not be_valid
     end
     it 'when provider only option' do
-      poll = Poll.create!({ title: 'Teste teste', description: 'Teste teste'})
+      user = User.create({username: 'xpto', password: '12345678'})
+      poll = Poll.create!({ title: 'Teste teste', description: 'Teste teste', user: user})
       option = Option.create!({ description: 'any', poll_id: poll.id})
 
       answer = Answer.create({ option: option })
@@ -14,7 +15,8 @@ RSpec.describe Answer, type: :model do
       expect(answer.errors[:poll].first).to eq("must exist")
     end
     it 'when provider only poll' do
-      poll = Poll.create!({ title: 'Teste teste', description: 'Teste teste'})
+      user = User.create({username: 'xpto', password: '12345678'})
+      poll = Poll.create!({ title: 'Teste teste', description: 'Teste teste', user: user})
 
       answer = Answer.create({ poll: poll })
 
@@ -23,7 +25,8 @@ RSpec.describe Answer, type: :model do
     end
   end
   it "should be create a new Option if the values provided are valid" do
-    poll = Poll.create!({ title: 'Teste teste', description: 'Teste teste'})
+    user = User.create({username: 'xpto', password: '12345678'})
+    poll = Poll.create!({ title: 'Teste teste', description: 'Teste teste', user: user})
     option = Option.create!({ description: 'any', poll_id: poll.id})
     answer = Answer.create({ poll: poll, option: option })
 
